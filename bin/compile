@@ -18,9 +18,6 @@ install_ext () {
     elif [[ -f "${PHP_EXT_DIR}/${ext}.so" ]]; then
         echo "extension = ${ext}.so" > "${BUILD_DIR}/.heroku/php/etc/php/conf.d/ext-${ext}.ini"
         echo "- ${ext} (${reason}; bundled)" | indent
-    elif [[ -f "/app/ext/${ext}.so" ]]; then
-        echo "extension = /app/ext/${ext}.so" > "${BUILD_DIR}/.heroku/php/etc/php/conf.d/ext-${ext}.ini"
-        echo "- ${ext} (custom defined extension; custom ext)" | indent
     elif echo -n ${ext} | php -r 'exit((int)!extension_loaded(file_get_contents("php://stdin")));'; then
         echo "- ${ext} (${reason}; enabled by default)" | indent
     else
@@ -87,6 +84,9 @@ fi
 if [[ $json_empty == true ]]; then
     echo "{\"repositories\":[{\"packagist\":false}]}" > composer.json
 fi
+
+pecl install geoip
+echo "geoip PECL installed"
 
 mkdir -p .heroku/php
 
