@@ -20,7 +20,7 @@ install_ext () {
         echo "- ${ext} (${reason}; bundled)" | indent
     elif [[ -f "/app/ext/${ext}.so" ]]; then
         echo "extension = /app/ext/${ext}.so" > "${BUILD_DIR}/.heroku/php/etc/php/conf.d/ext-${ext}.ini"
-        echo "- ${ext} (${reason}; custom ext)" | indent
+        echo "- ${ext} (custom defined extension; custom ext)" | indent
     elif echo -n ${ext} | php -r 'exit((int)!extension_loaded(file_get_contents("php://stdin")));'; then
         echo "- ${ext} (${reason}; enabled by default)" | indent
     else
