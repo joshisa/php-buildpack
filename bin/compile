@@ -85,9 +85,6 @@ if [[ $json_empty == true ]]; then
     echo "{\"repositories\":[{\"packagist\":false}]}" > composer.json
 fi
 
-pecl install geoip
-echo "geoip PECL installed"
-
 mkdir -p .heroku/php
 
 export COMPOSER_HOME=$CACHE_DIR/.composer
