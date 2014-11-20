@@ -18,6 +18,7 @@ dependencies=(
       'https://lang-php.s3.amazonaws.com/dist-beta/extensions/no-debug-non-zts-20121212/newrelic.tar.gz'
       'https://lang-php.s3.amazonaws.com/dist-beta/extensions/no-debug-non-zts-20121212/opcache.tar.gz'
       'https://lang-php.s3.amazonaws.com/dist-beta/extensions/no-debug-non-zts-20121212/redis.tar.gz'
+      'http://geolite.maxmind.com/download/geoip/api/c/GeoIP.tar.gz'
 )
 
 excluded_files=(
