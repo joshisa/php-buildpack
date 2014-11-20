@@ -14,6 +14,9 @@ install_ext () {
         elif [[ ( ! -f "$PHP_EXT_DIR/$ext.so" ) && ( "${ext}" == 'geoip' ) ]]; then
             curl --silent --location "http://pecl.php.net/get/geoip-1.1.0.tgz" | tar xz -C $BUILD_DIR/.heroku/php
             echo "- ${ext} (${reason}; downloaded, using 'ext-${ext}.ini')" | indent
+        elif [[ ( ! -f "$PHP_EXT_DIR/$ext.so" ) && ( "${ext}" == 'geos' ) ]]; then
+            curl --silent --location "https://s3.amazonaws.com/cirheroku/geos-3.3.2-herkou.tar.gz" | tar xz -C $BUILD_DIR/.heroku/php
+            echo "- ${ext} (${reason}; downloaded, using 'ext-${ext}.ini')" | indent
         else
             echo "- ${ext} (${reason}; bundled, using 'ext-${ext}.ini')" | indent
         fi
