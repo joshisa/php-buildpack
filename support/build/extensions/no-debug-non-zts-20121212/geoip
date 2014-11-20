@@ -15,6 +15,7 @@ curl -L ${dep_url} | tar xz
 
 pushd ${dep_dirname}-${dep_version}
 export PATH=${OUT_PREFIX}/bin:${PATH}
+phpize
 ./configure
 make
 # php was a build dep, and it's in $OUT_PREFIX. nuke that, then make install so all we're left with is the extension
