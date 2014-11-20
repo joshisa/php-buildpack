@@ -12,7 +12,6 @@ install_ext () {
             curl --silent --location "${S3_URL}/extensions/${ext_dir}/${ext}.tar.gz" | tar xz -C $BUILD_DIR/.heroku/php
             echo "- ${ext} (${reason}; downloaded, using 'ext-${ext}.ini')" | indent
         elif [[ ( ! -f "$PHP_EXT_DIR/$ext.so" ) && ( "${ext}" == 'geoip' ) ]]; then
-            echo "${ext} elif block entered"
             curl --silent --location "http://pecl.php.net/get/geoip-1.1.0.tgz" | tar xz -C $BUILD_DIR/.heroku/php
             echo "- ${ext} (${reason}; downloaded, using 'ext-${ext}.ini')" | indent
         else
